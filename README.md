@@ -20,8 +20,8 @@ The following configurations can be made:
 
 | <center>Config name</center> | <center>Description</center> |
 | --- | --- |
-| host | Hostname of Mumble server |
-| port | Port of Mumble server |
-| botName | Username of bot |
-| muteUsers | List of users bot won't interrupt | 
-| musicDir | Path to music directory |
+| `host` | Hostname of Mumble server |
+| `port` | Port of Mumble server |
+| `botName` | Username of bot |
+| `muteUsers` | List of users bot won't interrupt | 
+| `musicDir` | Path to music directory |
