@@ -14,7 +14,7 @@ Place MP3 files in `music/`. Start the bot with `npm start`.
 
 ## Configurations
 
-To configurate the bot, edit `config/default.json`.  
+To configure the bot, edit `config/default.json`.  
 
 The following configurations can be made:
 
