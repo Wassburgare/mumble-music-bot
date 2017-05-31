@@ -68,6 +68,7 @@ class MusicPlayer extends EventEmitter {
       this.stream.unpipe();
       this.stream.end();
       this.isPlaying = false;
+      this.removeAllListeners();
       console.log('Music stopped playing.');
     }
   }
