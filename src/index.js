@@ -10,23 +10,47 @@ const muteUsers = config.get('muteUsers');
 mumble.connect(`${host}:${port}`, (error, client) => {
   const musicPlayer = new MusicPlayer(client);
 
+  let users = [];
+
+  const shouldPlay = () => {
+    const userList = users.filter(
+      user => muteUsers.includes(user.name),
+    );
+
+    return userList.every(user => user.selfMute === true);
+  };
+
   if (error) {
     throw new Error(error);
   }
 
   client.on('initialized', () => {
-    const users = client.users().filter(
-      user => muteUsers.includes(user.name),
-    );
+    users = client.users();
 
-    if (!users.some(user => user.selfMute == null)) {
-      musicPlayer.play(client);
+    if (shouldPlay()) {
+      musicPlayer.play();
+    }
+  });
+
+  client.on('user-connect', (user) => {
+    users.push(user);
+
+    if (!shouldPlay()) {
+      musicPlayer.stop();
+    }
+  });
+
+  client.on('user-disconnect', (user) => {
+    users = users.filter(u => u.name !== user.name);
+
+    if (shouldPlay()) {
+      musicPlayer.play();
     }
   });
 
   client.on('user-self-mute', (user, muted) => {
     if (muteUsers.includes(user.name)) {
-      if (muted) {
+      if (shouldPlay()) {
         musicPlayer.play();
       } else {
         musicPlayer.stop();

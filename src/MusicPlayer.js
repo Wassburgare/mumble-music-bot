@@ -26,6 +26,7 @@ class MusicPlayer extends EventEmitter {
   constructor(client) {
     super();
     this.client = client;
+    this.isPlaying = false;
   }
 
   play() {
@@ -37,6 +38,10 @@ class MusicPlayer extends EventEmitter {
   }
 
   playSong() {
+    if (this.isPlaying) {
+      return;
+    }
+
     const lameDecoder = new lame.Decoder();
 
     lameDecoder.on('format', (format) => {
@@ -47,19 +52,24 @@ class MusicPlayer extends EventEmitter {
       }));
     });
 
+    this.isPlaying = true;
     this.stream = nextSong().pipe(lameDecoder);
     console.log('Music started playing.');
 
     this.stream.on('end', () => {
+      this.isPlaying = false;
       console.log('Song ended.');
       this.emit('song-end');
     });
   }
 
   stop() {
-    this.stream.unpipe();
-    this.stream.end();
-    console.log('Music stopped playing.');
+    if (this.stream) {
+      this.stream.unpipe();
+      this.stream.end();
+      this.isPlaying = false;
+      console.log('Music stopped playing.');
+    }
   }
 }
 
