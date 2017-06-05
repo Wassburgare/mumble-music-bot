@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init": "node -e \"$(babel ./src/config.js)\" : --config-dir dist && mkdirp dist/music/",
+    "init": "node -e \"$(babel ./src/config.js)\" : --config-dir build && mkdirp build/music/",
     "build": "webpack && npm run init",
-    "start": "npm run build && node dist/bundle.js"
+    "start": "npm run build && node build/bundle.js"
   },
   "license": "MIT",
   "dependencies": {
