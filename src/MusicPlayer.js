@@ -3,13 +3,14 @@ import fs from 'fs';
 import path from 'path';
 import EventEmitter from 'events';
 import config from './config';
+import program from './program';
 
 const nextSong = () => {
   if (!process.stdin.isTTY) {
     return process.stdin;
   }
 
-  const musicDir = path.join(__dirname, config.musicDir);
+  const musicDir = path.join(__dirname, program.musicDir || config.musicDir);
   // Should probably improve this file check...
   const songs = fs.readdirSync(musicDir).filter(song => /\.(mp3)$/i.test(song));
   const songName = songs[Math.floor(Math.random() * songs.length)];

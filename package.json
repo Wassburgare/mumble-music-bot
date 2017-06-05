@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init": "node -e \"$(babel ./src/config.js)\" : --config-dir build && mkdirp build/music/",
+    "init": "babel ./src/ --out-dir temp/ --ignore ./src/MusicPlayer.js && node ./temp/config.js --config-dir ../build && rimraf temp && mkdirp build/music/",
     "build": "webpack && npm run init",
     "start": "npm run build && node build/bundle.js"
   },
@@ -25,6 +25,7 @@
     "mkdirp": "^0.5.1",
     "node-loader": "^0.6.0",
     "proto-loader": "^0.2.0",
+    "rimraf": "^2.6.1",
     "string-replace-loader": "^1.2.0",
     "webpack": "^2.6.1"
   }
