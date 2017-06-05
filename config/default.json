@@ -1,8 +1,0 @@
-{
-  "host": "localhost",
-  "port": "64738",
-  "botName": "mumble-music-bot",
-  "muteUsers": [],
-  "joinUsers": [],
-  "musicDir": "./music"
-}

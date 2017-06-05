@@ -1,14 +1,15 @@
 import lame from 'lame';
 import fs from 'fs';
+import path from 'path';
 import EventEmitter from 'events';
-import config from 'config';
+import config from './config';
 
 const nextSong = () => {
   if (!process.stdin.isTTY) {
     return process.stdin;
   }
 
-  const musicDir = config.get('musicDir');
+  const musicDir = path.join(__dirname, config.musicDir);
   // Should probably improve this file check...
   const songs = fs.readdirSync(musicDir).filter(song => /\.(mp3)$/i.test(song));
   const songName = songs[Math.floor(Math.random() * songs.length)];

@@ -1,12 +1,12 @@
 import mumble from 'mumble';
-import config from 'config';
-import MusicPlayer from './MusicPlayer';
+import config from './src/config';
+import MusicPlayer from './src/MusicPlayer';
 
-const host = config.get('host');
-const port = config.get('port');
-const botName = config.get('botName');
-const muteUsers = config.get('muteUsers');
-const joinUsers = config.get('joinUsers');
+const host = config.host;
+const port = config.port;
+const botName = config.botName;
+const muteUsers = config.muteUsers;
+const joinUsers = config.joinUsers;
 
 mumble.connect(`${host}:${port}`, (error, client) => {
   const musicPlayer = new MusicPlayer(client);
