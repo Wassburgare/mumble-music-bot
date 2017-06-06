@@ -15,15 +15,16 @@ Place MP3 files in `build/music/`. Start the bot with `node build/bundle.js` or 
 
 ## Configurations
 
-To configure the bot, edit `build/config.json`.  
+To configure the bot, edit `build/config.json` or pass configurations as options.  
 
 The following configurations can be made:
 
-| <center>Config name</center> | <center>Description</center> |
-| --- | --- |
-| `host` | Hostname of Mumble server |
-| `port` | Port of Mumble server |
-| `botName` | Username of bot |
-| `muteUsers` | Bot mutes itself when users in this list are unmuted |
-| `joinUsers` | Bot mutes itself when users in this list are connected |
-| `musicDir` | Path to music directory |
+| <center>Config name</center> | <center>Option</center> | <center>Description</center> |
+| --- | --- | --- |
+| `host` | `-H`, `--host [host]` | Hostname of Mumble server |
+| `port` | `-p`, `--port [port]` | Port of Mumble server |
+| `botName` | `-n`, `--bot-name [name]` | Username of bot |
+| `muteUsers` | `-m`, `--mute-users [users]` | Bot mutes itself when users in this list are unmuted |
+| `joinUsers` | `-j`, `--join-users [users]` | Bot mutes itself when users in this list are connected |
+| `musicDir` | `-M`, `--music-dir [dir]` | Path to music directory |
+| `configDir` | `-c`, `--config-dir [dir]` | Path to config directory |
