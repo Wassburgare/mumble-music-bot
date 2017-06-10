@@ -60,3 +60,6 @@ typings/
 build/
 music/
 config/
+*.pem
+*.crt
+*.key
