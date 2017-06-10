@@ -17,7 +17,7 @@ Place MP3 files in `build/music/`. Start the bot with `node build/bundle.js` or 
 
 If you want to connect using a certificate, generate a private key and a self-signed certificate:
 ```
-$ openssl req -x509 -newkey rsa:2048 -nodes -keyout mumble.pem -out mumble.pem
+$ openssl req -x509 -newkey rsa:2048 -nodes -keyout build/mumble.pem -out build/mumble.pem
 ```
 Then configure the bot to use the key and certificate. See [Configurations](#configurations) for more information.
 
