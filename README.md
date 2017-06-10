@@ -28,3 +28,5 @@ The following configurations can be made:
 | `joinUsers` | `-j`, `--join-users [users]` | Bot mutes itself when users in this list are connected |
 | `musicDir` | `-M`, `--music-dir [dir]` | Path to music directory |
 | `configDir` | `-c`, `--config-dir [dir]` | Path to config directory |
+| `privateKey` | `-k`, `--private-key` | Path to private key file |
+| `certificate` | `-C`, `--certificate` | Path to certificate file |
