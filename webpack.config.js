@@ -67,7 +67,7 @@ module.exports = {
       ],
       {
         exclude: [
-          'config.json', 'music',
+          'config.json', 'music', /.+\.(pem|crt|key)/,
         ],
       // eslint-disable-next-line comma-dangle
       }

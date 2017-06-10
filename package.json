@@ -21,7 +21,7 @@
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.1",
     "babel-preset-es2015": "^6.24.1",
-    "clean-webpack-plugin": "^0.1.16",
+    "clean-webpack-plugin": "git://github.com/fbonetti/clean-webpack-plugin.git",
     "mkdirp": "^0.5.1",
     "node-loader": "^0.6.0",
     "proto-loader": "^0.2.0",
