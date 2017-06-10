@@ -1,4 +1,6 @@
 import mumble from 'mumble';
+import fs from 'fs';
+import path from 'path';
 import program from './src/program';
 import config from './src/config';
 import MusicPlayer from './src/MusicPlayer';
@@ -8,8 +10,21 @@ const port = program.port || config.port;
 const botName = program.botName || config.botName;
 const muteUsers = program.muteUsers || config.muteUsers;
 const joinUsers = program.joinUsers || config.joinUsers;
+const privateKey = program.privateKey || config.privateKey;
+const certificate = program.certificate || config.certificate;
 
-mumble.connect(`${host}:${port}`, (error, client) => {
+let options = null;
+try {
+  options = {
+    key: fs.readFileSync(path.join(__dirname, privateKey)),
+    cert: fs.readFileSync(path.join(__dirname, certificate)),
+  };
+} catch (e) {
+  console.log('Could not load private/public certificate files.');
+  console.log('Trying to connect without client certificate.');
+}
+
+mumble.connect(`${host}:${port}`, options, (error, client) => {
   const musicPlayer = new MusicPlayer(client);
 
   let users = [];

@@ -15,6 +15,8 @@ if (!fs.existsSync(configPath)) {
     joinUsers: [],
     musicDir: './music',
     configDir: './',
+    privateKey: '',
+    certificate: '',
   };
 
   jsonfile.writeFileSync(configPath, defaultConfig, { spaces: 2 });
