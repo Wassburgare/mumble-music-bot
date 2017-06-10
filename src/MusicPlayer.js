@@ -6,10 +6,6 @@ import config from './config';
 import program from './program';
 
 const nextSong = () => {
-  if (!process.stdin.isTTY) {
-    return process.stdin;
-  }
-
   const musicDir = path.join(__dirname, program.musicDir || config.musicDir);
   // Should probably improve this file check...
   const songs = fs.readdirSync(musicDir).filter(song => /\.(mp3)$/i.test(song));
